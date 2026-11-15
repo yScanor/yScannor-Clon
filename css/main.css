@@ -42,7 +42,8 @@ body.scanning .sfx{opacity:.12;animation:jitter .2s steps(1) infinite}
 .lang-trigger{border:2px solid #fff;background:#000;color:#fff;font:700 12px var(--f-mono);display:inline-flex;align-items:center;gap:8px;padding:8px 11px;cursor:pointer;transform:skewX(-10deg);box-shadow:3px 3px 0 var(--g3)}
 .lang-trigger:active,.lang-menu:focus-within .lang-trigger{background:#fff;color:#000}
 .lang-options{position:absolute;top:calc(100% + 10px);right:0;min-width:170px;border:2px solid #fff;background:#000;box-shadow:5px 5px 0 var(--g3);display:none;z-index:50}
-.lang-menu:hover .lang-options,.lang-menu:focus-within .lang-options{display:block}
+.lang-menu.open .lang-options{display:block}
+@media (hover:hover){.lang-menu:hover .lang-options{display:block}}
 .lang-options a{display:block;text-decoration:none;color:#fff;padding:9px 12px;font:700 13px var(--f-mono);border-bottom:1px dotted var(--g3)}
 .lang-options a:last-child{border-bottom:0}
 .lang-options a:hover,.lang-options a.active{background:#fff;color:#000}
@@ -210,3 +211,6 @@ body.scanning .hero-copy h1::before,body.scanning .hero-copy h1::after{opacity:1
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
 
 .hero-copy .kicker{color:#000;max-width:none}
+
+/* menu de idiomas sempre acima do conteúdo */
+.topbar,.site-header,.site-header.minimal{z-index:30!important}
