@@ -1,0 +1,29 @@
+yScannor — proteção contra cópia e golpes com a sua marca
+
+O QUE JÁ ESTÁ NO SITE
+- js/guard.js: bloqueia o site dentro de iframe e, depois que você preencher OFFICIAL_HOSTS,
+  mostra "Cópia não oficial" em qualquer endereço que não seja o seu.
+- _headers: cabeçalhos anti-iframe (Cloudflare Pages / Netlify).
+- Marca d'água de autoria (ys-51b312666cb3) em todas as páginas e arquivos, para provar que o original é seu.
+
+IMPORTANTE (sem enrolação)
+Nenhum site público consegue ser 100% impossível de copiar: tudo que o navegador mostra pode ser salvo.
+Criptografar ou ofuscar o código no front-end não adianta, porque a chave precisa ir junto.
+A proteção real é: (1) deixar o que tem valor no servidor, (2) travar o servidor para aceitar só o seu
+domínio e (3) derrubar rápido as cópias que aparecerem.
+
+FAÇA NO SERVIDOR (o mais importante)
+- Na rota /website-cloner/stream: aceite só requisições com Origin/Referer do seu domínio,
+  limite requisições por IP (rate limit) e use Cloudflare com "Bot Fight Mode".
+
+FAÇA NO GITHUB
+- Deixe o repositório PRIVADO. Repositório público pode ser copiado por qualquer pessoa.
+- Se precisar de site grátis a partir de repo privado, use Cloudflare Pages ou Netlify.
+- Não coloque chaves/senhas no repositório.
+
+SE ALGUÉM COPIAR OU USAR SUA MARCA
+- Denuncie a página: Google Safe Browsing (report phishing), o provedor/hospedagem da cópia,
+  o registrador do domínio, a Cloudflare (abuse) e o GitHub (DMCA takedown).
+- Use a marca d'água e a data de 2026 como prova de autoria.
+- Registre também domínios parecidos com o seu e monitore novos domínios com sua marca (crt.sh, Google Alerts).
+- Considere registrar a marca no INPI.
