@@ -1,4 +1,8 @@
 /* yScannor © 2026 — marca d'água: ys-51b312666cb3 */
+/* ── Servidor do clonador ──
+   Deixe "" quando o site e o servidor estão no mesmo endereço.
+   Se o site fica no GitHub Pages, coloque o endereço do servidor. Ex.: "https://yscannor.onrender.com" */
+var YS_API_BASE = "";
 /* ── Web Cloner Application JavaScript ── */
 
 /* ── DOM refs ── */
@@ -207,7 +211,7 @@ form.addEventListener("submit", function (e) {
   }, 200);
 
   var params = new URLSearchParams({ url: url, depth: depth });
-  eventSource = new EventSource("/website-cloner/stream?" + params.toString());
+  eventSource = new EventSource(YS_API_BASE + "/website-cloner/stream?" + params.toString());
 
   /**
    * Handle fetch event
@@ -287,7 +291,7 @@ form.addEventListener("submit", function (e) {
       "done",
     );
 
-    downloadLink.href = "/website-cloner/download/" + d.jobId;
+    downloadLink.href = YS_API_BASE + "/website-cloner/download/" + d.jobId;
     downloadArea.classList.add("active");
 
     cloneBtn.disabled = false;
