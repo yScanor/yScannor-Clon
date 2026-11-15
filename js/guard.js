@@ -3,9 +3,9 @@
   // ===== CONFIGURAÇÃO ===================================================
   // Coloque aqui SÓ os endereços oficiais do seu site (sem https://).
   // Ex.: ['meusite.com', 'www.meusite.com', 'usuario.github.io']
-  var OFFICIAL_HOSTS = [];
+  var OFFICIAL_HOSTS = ['yscanor.github.io'];
   // Endereço oficial completo para onde enviar quem cair numa cópia. Ex.: 'https://meusite.com/'
-  var OFFICIAL_URL = '';
+  var OFFICIAL_URL = 'https://yscanor.github.io/yScannor-Clon/';
   // =====================================================================
   var DEV_HOSTS = ['localhost', '127.0.0.1', '[::1]'];
 

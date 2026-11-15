@@ -1,6 +1,13 @@
 /* yScannor © 2026 — marca d'água: ys-51b312666cb3 */
 // Efeitos yScannor: tela invertida ao clicar, linhas de velocidade e glitch durante a clonagem
 (function () {
+  document.querySelectorAll('.lang-menu').forEach(function (m) {
+    var t = m.querySelector('.lang-trigger');
+    if (t) t.addEventListener('click', function (e) { e.stopPropagation(); m.classList.toggle('open'); });
+  });
+  document.addEventListener('click', function () {
+    document.querySelectorAll('.lang-menu.open').forEach(function (m) { m.classList.remove('open'); });
+  });
   var b = document.body, panel = document.getElementById('progressPanel'), icon = document.getElementById('progressIcon'),
     form = document.getElementById('clonerForm'), h1 = document.querySelector('.hero-copy h1'), was = false;
   if (h1) h1.setAttribute('data-text', h1.textContent.trim());
