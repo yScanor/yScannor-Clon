@@ -3,9 +3,13 @@
 (function () {
   document.querySelectorAll('.lang-menu').forEach(function (m) {
     var t = m.querySelector('.lang-trigger');
-    if (t) t.addEventListener('click', function (e) { e.stopPropagation(); m.classList.toggle('open'); });
+    if (t) t.addEventListener('click', function (e) { e.preventDefault(); e.stopPropagation(); m.classList.toggle('open'); });
+    m.querySelectorAll('.lang-options a').forEach(function (a) {
+      a.addEventListener('click', function (e) { e.preventDefault(); e.stopPropagation(); window.location.href = a.href; });
+    });
   });
-  document.addEventListener('click', function () {
+  document.addEventListener('click', function (e) {
+    if (e.target.closest && e.target.closest('.lang-menu')) return;
     document.querySelectorAll('.lang-menu.open').forEach(function (m) { m.classList.remove('open'); });
   });
   var b = document.body, panel = document.getElementById('progressPanel'), icon = document.getElementById('progressIcon'),
