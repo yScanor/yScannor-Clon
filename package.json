@@ -1,0 +1,8 @@
+{
+  "name": "yscannor-server",
+  "version": "1.0.0",
+  "description": "Servidor do clonador yScannor (sem dependências)",
+  "main": "server.js",
+  "scripts": { "start": "node server.js" },
+  "engines": { "node": ">=18" }
+}
