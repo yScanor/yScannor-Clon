@@ -6,7 +6,7 @@ const http = require('http'), https = require('https'), dns = require('dns'), ne
 const PORT = +process.env.PORT || 3000;
 const ALLOWED_ORIGINS = (process.env.ALLOWED_ORIGINS || 'https://yscanor.github.io').split(',').map(s => s.trim()).filter(Boolean);
 const ALLOW_PRIVATE = process.env.ALLOW_PRIVATE === '1'; // só para testes locais
-const STATIC_DIR = [process.env.STATIC_DIR, path.join(__dirname, 'public'), path.join(__dirname, 'Syte'), path.join(__dirname, '..', 'Syte')]
+const STATIC_DIR = [process.env.STATIC_DIR, path.join(__dirname, 'public'), __dirname, path.join(__dirname, 'Syte'), path.join(__dirname, '..', 'Syte')]
   .filter(Boolean).find(d => fs.existsSync(path.join(d, 'index.html')));
 const LIM = { fileBytes: 12 * 1024 * 1024, totalBytes: 100 * 1024 * 1024, files: 1500, timeout: 15000, jobMs: 150000, conc: 6,
   jobsPerIp: 6, windowMs: 10 * 60 * 1000, globalJobs: 3 };
@@ -287,6 +287,7 @@ function serveStatic(req, res, pathname) {
   if (!STATIC_DIR) { res.writeHead(404); return res.end('Site não encontrado no servidor.'); }
   let p; try { p = decodeURIComponent(pathname); } catch (e) { res.writeHead(400); return res.end(); }
   const base = path.resolve(STATIC_DIR), cands = [p, p + '.html', path.posix.join(p, 'index.html')];
+  if (/(^|\/)(\.|server\.js$|package\.json$|node_modules)/i.test(p)) { res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' }); return res.end('Página não encontrada'); }
   for (const c of cands) {
     const f = path.resolve(base, '.' + path.sep + path.normalize(c).replace(/^([/\\])+/, ''));
     if (!f.startsWith(base) || !fs.existsSync(f) || !fs.statSync(f).isFile()) continue;
