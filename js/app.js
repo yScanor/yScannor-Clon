@@ -3,6 +3,7 @@
    Deixe "" quando o site e o servidor estão no mesmo endereço.
    Se o site fica no GitHub Pages, coloque o endereço do servidor. Ex.: "https://yscannor.onrender.com" */
 var YS_API_BASE = "https://yscannor-clon.onrender.com";
+YS_API_BASE = String(YS_API_BASE).replace(/\/+$/, ""); // remove barras no final
 /* ── Web Cloner Application JavaScript ── */
 
 /* ── DOM refs ── */
