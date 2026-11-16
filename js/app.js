@@ -2,7 +2,7 @@
 /* ── Servidor do clonador ──
    Deixe "" quando o site e o servidor estão no mesmo endereço.
    Se o site fica no GitHub Pages, coloque o endereço do servidor. Ex.: "https://yscannor.onrender.com" */
-var YS_API_BASE = "https://yscannor-clon.onrender.com/";
+var YS_API_BASE = "https://yscannor-clon.onrender.com";
 /* ── Web Cloner Application JavaScript ── */
 
 /* ── DOM refs ── */
